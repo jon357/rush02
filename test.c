@@ -20,21 +20,6 @@ void	printstr(char *c)
 	}
 }
 
-void	print_struct(char *c)
-{
-	int	i;
-	Tuple	tab;
-
-	i = 0;
-	while (tab.a[i])
-	{
-		printstr(tab.a[i]);
-		printstr(" : ");
-		printstr(tab.b[i++]);
-		printstr(" , ");
-	}
-}
-
 int	size_str(char *c)
 {
 	int	i;
@@ -83,6 +68,48 @@ char	*ft_strcat(char *dest, char *src)
 	return (c);
 }
 
+void	print_struct(char *c)
+{
+	int	i;
+	int	j;
+	int	x;
+	int	size;
+	char	temp;
+	Tuple	tab;
+
+	size = size_str(c);
+	i = 0;
+	x = 0;
+	while (x < size)
+	{
+		temp = c[x];
+		j = 0;
+		while (tab.a[j])
+		{
+			if (temp == tab.a[j][0])
+			{
+				printstr(tab.b[j]);
+				printstr(" ");
+			}
+			j++;
+		}
+		x++;
+	}
+//	while (x = size)
+//	{
+//		temp = ft_strcat(temp, '0');
+//		x++;
+//	}
+/*	i = 0;
+	while (tab.a[i])
+	{
+		printstr(tab.a[i]);
+		printstr(" : ");
+		printstr(tab.b[i++]);
+		printstr(" , ");
+	}*/
+}
+
 char	*ft_tab(int size, char *dic)
 {
 	int	i;
@@ -117,15 +144,6 @@ char	*ft_tab(int size, char *dic)
 		}
 	}
 	close(fd_to_read);
-
-/*
-	i = 0;
-	while (i < size)
-	{
-		printstr(tab1[i]);
-		printstr(tab2[i]);
-		i++;
-	}*/
 	return (temp);
 }
 
